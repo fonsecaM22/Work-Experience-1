@@ -11,19 +11,29 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <a class="logo" href="index.html"><span class="logo-mark"></span>Calico Media</a>
-      <nav aria-label="Main">
-        <ul class="nav-links">
-          <li><a href="features.html">Features</a></li>
-          <li><a href="pricing.html">Pricing</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html" aria-current="page">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="index.html"><span class="logo-mark"></span>Calico Media</a>
+
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="main-nav">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+
+    <nav id="main-nav" aria-label="Main">
+      <ul class="nav-links">
+        <li><a href="features.html" aria-current="page">Features</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="index.html#playbook">Growth playbook</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="https://app.calicomedia.co/login">Log in</a></li>
+        <li><a class="btn" href="contact.html">Book a demo</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
   <main>
     <section class="page-header">
@@ -102,5 +112,6 @@
     </div>
   </footer>
   <script src="js/contact.js"></script>
+  <script src="js/nav.js"></script>
 </body>
 </html>
