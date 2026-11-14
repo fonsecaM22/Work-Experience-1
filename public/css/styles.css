@@ -751,28 +751,40 @@ img {
 }
 
 @media (max-width: 1080px) {
+
   .hero {
     padding: 48px 0 64px;
+
   }
 
   .hero-inner {
-    flex-direction: column;
     align-items: stretch;
     gap: 32px;
   }
 
-  .hero-text {
-    width: 100%;
-  }
+ .hero-text h1 {
+  font-size: clamp(32px, 4vw, 56px);
+}
+
+.hero-text .lead {
+  font-size: clamp(15px, 1.5vw, 18px);
+}
 
   .hero-media {
-    max-width: 100%;
-  }
+  width: 100%;
+  max-width: 600px;
+  flex: 1;
+  min-width: 0;
+}
 
-  .hero-image {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-  }
+.hero-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
 
   .hero-actions {
     margin-top: 24px;
@@ -911,6 +923,12 @@ img {
     width: 100%;
     flex-shrink: 1;
   }
+
+.hero-media {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
 
   /* Grids */
   .playbook-grid,
