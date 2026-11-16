@@ -37,6 +37,22 @@
     <section class="section">
       <div class="container contact-layout">
         <form class="contact-form" id="contact-form" action="/contact" method="post">
+
+  <!-- Honeypot: real visitors should leave this empty -->
+          <div class="form-honeypot" aria-hidden="true">
+           <label for="website">Website</label>
+            <input
+              type="text"
+              id="website"
+              name="website"
+              tabindex="-1"
+              autocomplete="off"
+              >
+          </div>
+
+  <!-- Form load timestamp -->
+          <input type="hidden" id="form-loaded-at" name="form_loaded_at">
+
           <label for="name">Your name</label>
           <input type="text" id="name" name="name" required>
 
