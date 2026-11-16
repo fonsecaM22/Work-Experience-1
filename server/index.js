@@ -1,3 +1,4 @@
+
 const path = require('path');
 const express = require('express');
 const { sendToSupport } = require('./support');
@@ -7,10 +8,16 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, '..', 'public'), { extensions: ['html'] }));
 
+app.use(
+  express.static(path.join(__dirname, '..', 'public'), {
+    extensions: ['html']
+  })
+);
 
 app.post('/contact', (req, res) => {
+
+  console.log('CONTACT FORM ROUTE REACHED');
 
   // Honeypot check
   const website = req.body.website || '';
@@ -19,6 +26,12 @@ app.post('/contact', (req, res) => {
   const loadedAt = Number(req.body.form_loaded_at);
   const elapsedTime = Date.now() - loadedAt;
 
+  // Temporary debugging information
+  console.log('Submission received:', {
+    honeypotFilled: website.trim() !== '',
+    elapsedTime
+  });
+
   // Silently drop suspicious submissions
   if (
     website.trim() !== '' ||
@@ -26,6 +39,8 @@ app.post('/contact', (req, res) => {
     loadedAt <= 0 ||
     elapsedTime < 3000
   ) {
+    console.log('Submission dropped. Spam protection triggered.');
+
     return res.json({ ok: true });
   }
 
@@ -43,11 +58,12 @@ app.post('/contact', (req, res) => {
   }
 
   // Send legitimate submissions to support
+  console.log('Legitimate submission accepted. Calling sendToSupport().');
+
   sendToSupport({ name, email, message });
 
   res.json({ ok: true });
 });
-
 
 app.listen(PORT, () => {
   console.log(`Calico Media site running at http://localhost:${PORT}`);
